@@ -154,3 +154,6 @@
 [init]
 
 	defaultBranch = main
+[user]
+	name = Jesse Pledger
+	email = jessepledger@gmail.com
