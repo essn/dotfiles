@@ -17,7 +17,7 @@ _darcs
 
 \.git
 \.gitignore
-\.gitsubmodules
+\.gitmodules
 
 \asdf        # asdf submodule
 
