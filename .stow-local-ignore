@@ -17,6 +17,9 @@ _darcs
 
 \.git
 \.gitignore
+\.gitsubmodules
+
+\asdf        # asdf submodule
 
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files
