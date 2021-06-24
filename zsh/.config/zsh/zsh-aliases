@@ -16,7 +16,7 @@ alias restartys='brew services stop yabai && brew services stop skhd'
 alias g='git'
 
 # alias v to $EDITOR
-alias e='$EDITOR .'
+alias e='$EDITOR'
 
 # list all hidden files with including info with exa using ll
 alias ll='exa -al'
