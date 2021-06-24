@@ -16,7 +16,6 @@ _darcs
 \.hg
 
 \.git
-\.gitignore
 \.gitmodules
 
 \asdf        # asdf submodule
