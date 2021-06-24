@@ -10,7 +10,7 @@ alias startys='brew services start yabai && brew services start skhd'
 alias stopys='brew services restart yabai && brew restart start skhd'
 
 # start skhd and yabai
-alias restartys='brew stop start yabai && brew stop start skhd'
+alias restartys='brew services stop start yabai && brew services stop start skhd'
 
 # alias git to g
 alias g='git'
