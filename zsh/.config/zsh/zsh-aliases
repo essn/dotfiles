@@ -3,6 +3,9 @@ alias j='z'
 alias f='zi'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
+# alias git to g
+alias g='git'
+
 # list all hidden files with including info with exa using ll
 alias ll='exa -al'
 
