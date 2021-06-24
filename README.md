@@ -42,3 +42,4 @@ TODO
 - [ ] List of creditors
 - [ ] Add VIM
 - [ ] Fix submodules
+- [ ] Make sure that brew auto completions are correctly picked up
