@@ -4,6 +4,10 @@
 # Compiled Python files
 *.pyc
 
+# Python init files
+*__.py
+*__.pyo
+
 # Folder view configuration files
 .DS_Store
 Desktop.ini
