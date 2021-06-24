@@ -7,16 +7,16 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias startys='brew services start yabai && brew services start skhd'
 
 # stop skhd and yabai
-alias stopys='brew services restart yabai && brew restart start skhd'
+alias stopys='brew services restart yabai && brew services restart skhd'
 
 # start skhd and yabai
-alias restartys='brew services stop start yabai && brew services stop start skhd'
+alias restartys='brew services stop yabai && brew services stop skhd'
 
 # alias git to g
 alias g='git'
 
 # alias ra to ranger
-alias ra='ra'
+alias ra='ranger'
 
 # list all hidden files with including info with exa using ll
 alias ll='exa -al'
