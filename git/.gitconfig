@@ -160,3 +160,5 @@
 [user]
 	name = Jesse Pledger
 	email = jessepledger@gmail.com
+[pull]
+	rebase = false
