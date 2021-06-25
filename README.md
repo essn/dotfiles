@@ -47,3 +47,7 @@ TODO
 - [ ] Revisit tmux coloring and status bar
 - [x] Fix asdf submodule && make sure lnvim submodule works
 - [ ] Make sure ranger opens nvim w correct file
+- [ ] Base16 colors in env?
+- [ ] Tmux sources colors from env
+- [ ] Nvim sources colors from env
+- [ ] Zsh sources colors from env
