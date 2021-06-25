@@ -23,12 +23,6 @@ Clone onto your laptop:
 
     git clone --recurse-submodules git://github.com/essn/dotfiles.git ~/dotfiles
 
-Note:
-
-You may need to install asdf separately until submodules are worked out.
-
-    git clone git@github.com:asdf-vm/asdf.git ~/dotfiles/asdf/.asdf
-
 Install the dotfiles:
 
     cd dotfiles && stow .
@@ -51,5 +45,5 @@ TODO
 - [x] Add kj mapping for esc in nvim
 - [ ] Allow h j k l navigation in tmux panes
 - [ ] Revisit tmux coloring and status bar
-- [ ] Fix asdf submodule && make sure lnvim submodule works
+- [x] Fix asdf submodule && make sure lnvim submodule works
 - [ ] Make sure ranger opens nvim w correct file
