@@ -51,3 +51,4 @@ TODO
 - [ ] Change ; ; mapping for nvim
 - [ ] Allow h j k l navigation in tmux panes
 - [ ] Revisit tmux coloring and status bar
+- [ ] Fix asdf submodule && make sure lnvim submodule works
