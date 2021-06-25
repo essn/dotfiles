@@ -1,4 +1,10 @@
 #!/bin/sh
+
+# annoying python things
+alias pip="/usr/local/bin/pip3"
+alias python="/usr/local/bin/python3"
+
+# z stuff
 alias j='z'
 alias f='zi'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"

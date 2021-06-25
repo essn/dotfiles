@@ -43,3 +43,8 @@ TODO
 - [ ] Add VIM
 - [ ] Fix submodules
 - [ ] Make sure that brew auto completions are correctly picked up
+- [ ] Get that diff-so-fancy thing from mathias dotfiles
+- [ ] SSH / GPG settings. Sign commits and maybe pull keys from a 3rd party?
+- [ ] Move as much to ASDF as possible
+- [ ] Global tools symlink for ASDF
+- [ ] Fix zsh python aliases and asdf python in general
