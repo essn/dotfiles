@@ -48,3 +48,6 @@ TODO
 - [ ] Move as much to ASDF as possible
 - [ ] Global tools symlink for ASDF
 - [ ] Fix zsh python aliases and asdf python in general
+- [ ] Change ; ; mapping for nvim
+- [ ] Allow h j k l navigation in tmux panes
+- [ ] Revisit tmux coloring and status bar
