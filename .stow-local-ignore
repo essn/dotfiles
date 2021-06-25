@@ -15,10 +15,9 @@ CVS
 _darcs
 \.hg
 
-\.git
-\.gitmodules
+init         # init scripts
 
-\asdf        # asdf submodule
+\.git
 
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files
