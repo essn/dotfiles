@@ -40,15 +40,16 @@ TODO
 - [ ] OSX System Preferences script
 - [ ] Init script to install brew and related packages
 - [ ] List of creditors
-- [ ] Add VIM
-- [ ] Fix submodules
+- [x] Add VIM
 - [ ] Make sure that brew auto completions are correctly picked up
 - [ ] Get that diff-so-fancy thing from mathias dotfiles
 - [ ] SSH / GPG settings. Sign commits and maybe pull keys from a 3rd party?
 - [ ] Move as much to ASDF as possible
-- [ ] Global tools symlink for ASDF
+- [ ] Global tools symlink for brew and ASDF
 - [ ] Fix zsh python aliases and asdf python in general
-- [ ] Change ; ; mapping for nvim
+- [x] Change ; ; mapping for nvim
+- [x] Add kj mapping for esc in nvim
 - [ ] Allow h j k l navigation in tmux panes
 - [ ] Revisit tmux coloring and status bar
 - [ ] Fix asdf submodule && make sure lnvim submodule works
+- [ ] Make sure ranger opens nvim w correct file
