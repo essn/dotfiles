@@ -1,3 +1,6 @@
 [submodule "nvim/.config/nvim"]
     path = nvim/.config/nvim
     url = git@github.com:essn/lvim.git
+[submodule "asdf/.asdf"]
+	path = asdf/.asdf
+	url = git@github.com:asdf-vm/asdf.git
