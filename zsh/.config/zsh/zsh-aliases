@@ -12,11 +12,11 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 # start skhd and yabai
 alias startys='brew services start yabai && brew services start skhd'
 
-# stop skhd and yabai
-alias stopys='brew services restart yabai && brew services restart skhd'
-
 # start skhd and yabai
-alias restartys='brew services stop yabai && brew services stop skhd'
+alias restartys='brew services restart yabai && brew services restart skhd'
+
+# stop skhd and yabai
+alias stop='brew services stop yabai && brew services stop skhd'
 
 # alias git to g
 alias g='git'
