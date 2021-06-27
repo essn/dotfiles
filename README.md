@@ -44,10 +44,10 @@ TODO
 - [x] Change ; ; mapping for nvim
 - [x] Add kj mapping for esc in nvim
 - [ ] Allow h j k l navigation in tmux panes
-- [ ] Revisit tmux coloring and status bar
+- [x] Revisit tmux coloring and status bar
 - [x] Fix asdf submodule && make sure lnvim submodule works
 - [x] Make sure ranger opens nvim w correct file
-- [ ] Base16 colors in env?
+- [x] Base16 colors in env?
 - [ ] Tmux sources colors from env
 - [ ] Nvim sources colors from env
 - [ ] Zsh sources colors from env
