@@ -5,6 +5,5 @@ SAVEHIST=1000000
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
-export EDITOR="$(which nvim)"
-export PATH="$HOME/.config/nvim/bin:$PATH"
+export EDITOR=$HOME/.asdf/shims/nvim
 eval "$(zoxide init zsh)"
