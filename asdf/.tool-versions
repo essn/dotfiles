@@ -5,3 +5,4 @@ neovim nightly
 yarn 1.22.0
 fzf 0.27.2
 python system 3.6.12
+tmux 3.2a
