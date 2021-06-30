@@ -54,3 +54,4 @@ TODO
 - [ ] Compatibilty w Linux
 - [ ] Fonts install automatically
 - [ ] Revisit nvim
+- [ ] If ASDF handles zoxide the sourcing order needs to be changed
