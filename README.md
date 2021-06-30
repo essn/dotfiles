@@ -51,3 +51,6 @@ TODO
 - [ ] Tmux sources colors from env
 - [ ] Nvim sources colors from env
 - [ ] Zsh sources colors from env
+- [ ] Compatibilty w Linux
+- [ ] Fonts install automatically
+- [ ] Revisit nvim
