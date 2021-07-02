@@ -122,10 +122,26 @@ sudo chflags uchg /private/var/vm/sleepimage
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the Pictures/Screenshots
-defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
+screencapture_dir="${HOME}/Pictures/Screenshots"
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+function write_screencapture_dir {
+  echo "Setting screen capture directory: $screencapture_dir"
+  defaults write com.apple.screencapture location -string $screencapture_dir
+}
+
+# Check if directory exists
+if [ -d "$screencapture_dir" ]; then
+    # Make directory screencapture dir
+    write_screencapture_dir
+# Directory does not exist
+else
+    echo "Creating screen capture directory: $screencapture_dir"
+    # Create directory
+    mkdir "$screencapture_dir"
+    write_screencapture_dir
+fi
+
+# Set screenshot type to png
 defaults write com.apple.screencapture type -string "png"
 
 # Disable shadow in screenshots
@@ -227,6 +243,7 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
+chflags nohidden ~/Volumes && xattr -d com.apple.FinderInfo ~/Volumes
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
@@ -260,7 +277,7 @@ defaults write com.apple.dock show-process-indicators -bool true
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-#defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-apps -array
 
 # Show only open applications in the Dock
 #defaults write com.apple.dock static-only -bool true
