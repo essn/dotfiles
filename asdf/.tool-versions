@@ -2,7 +2,7 @@ nodejs 12.14.0
 ruby 2.7.2
 lua 5.4.3
 neovim nightly
-yarn 1.22.0
+yarn 1.22.10
 fzf 0.27.2
 python system 3.6.12
 tmux 3.2a
@@ -10,3 +10,6 @@ redis 6.2.4
 postgres 13.3
 golang 1.16.5
 watchexec 1.15.3
+haskell 9.0.1
+ripgrep 0.1.18
+httpie-go 0.7.0
