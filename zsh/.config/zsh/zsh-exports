@@ -6,4 +6,5 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
 export EDITOR=$HOME/.asdf/shims/nvim
+export PATH=$HOME/.local/bin:$PATH
 eval "$(zoxide init zsh)"
