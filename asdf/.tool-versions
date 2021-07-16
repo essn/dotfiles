@@ -1,7 +1,7 @@
 nodejs 12.14.0
 ruby 2.7.2
 lua 5.4.3
-neovim nightly
+neovim 0.5.0
 yarn 1.22.10
 fzf 0.27.2
 python system 3.6.12
@@ -13,3 +13,5 @@ watchexec 1.15.3
 haskell 9.0.1
 ripgrep 0.1.18
 httpie-go 0.7.0
+cmake 3.20.5
+github-cli 1.12.1
