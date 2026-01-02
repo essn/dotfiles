@@ -1,0 +1,5 @@
+# Chezmoi generated configuration file containing sensitive values
+.chezmoi.toml
+
+# Claude Code generated files
+CLAUDE.md
