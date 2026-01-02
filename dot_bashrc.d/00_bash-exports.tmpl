@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Bitwarden SSH agent
+export SSH_AUTH_SOCK={{ .chezmoi.config.data.ssh_auth_sock }}
+
+
+# Editor configuration - auto-detect best available
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+    export VISUAL=nvim
+elif command -v vim &> /dev/null; then
+    export EDITOR=vim
+    export VISUAL=vim
+elif command -v hx &> /dev/null; then
+    export EDITOR=hx
+    export VISUAL=hx
+else
+    export EDITOR=nano
+    export VISUAL=nano
+fi
+
+# Pager
+if command -v less &> /dev/null; then
+    export PAGER=less
+    export LESS='-R -F -X'
+fi
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Enable color support
+export CLICOLOR=1
+
+# Better colors for ls (if using GNU coreutils)
+if command -v dircolors &> /dev/null; then
+    eval "$(dircolors -b)"
+fi

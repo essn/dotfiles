@@ -1,0 +1,150 @@
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py", "pyi", "py3", "pyw", ".pythonstartup", ".pythonrc"]
+shebangs = ["python"]
+roots = [".", "pyproject.toml", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = ["pyright", "ruff"]
+indent = { tab-width = 4, unit = "    " }
+auto-format = true
+
+[language.formatter]
+command = "ruff"
+args = ["format", "-"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config]
+reportMissingTypeStubs = false
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+autoImportCompletions = true
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config]
+settings = { run = "onSave" }
+
+# TypeScript language configuration
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier" }
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+# includeInlayEnumMemberValueHints = true
+# includeInlayFunctionLikeReturnTypeHints = true
+# includeInlayFunctionParameterTypeHints = false
+includeInlayParameterNameHints = "all"
+# includeInlayParameterNameHintsWhenArgumentMatchesName = true
+# includeInlayPropertyDeclarationTypeHints = true
+# includeInlayVariableTypeHints = true
+
+# JavaScript language configuration
+[[language]]
+name = "javascript"
+auto-format = true
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier" }
+
+# Yaml Configuration
+[[language]]
+name = "yaml"
+scope = "source.yaml"
+file-types = ["yml", "yaml"]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+language-servers = ["yaml-language-server", "ansible-language-server"]
+injection-regex = "yml|yaml"
+
+[[grammar]]
+name = "yaml"
+source = { git = "https://github.com/ikatyang/tree-sitter-yaml", rev = "0e36bed171768908f331ff7dff9d956bae016efb" }
+
+# TOML configuration
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+scope = "source.toml"
+injection-regex = "toml"
+file-types = [
+  "toml",
+  { glob = "pdm.lock" },
+  { glob = "poetry.lock" },
+  { glob = "Cargo.lock" },
+  { glob = "uv.lock" },
+]
+comment-token = "#"
+language-servers = ["taplo"]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "toml"
+source = { git = "https://github.com/ikatyang/tree-sitter-toml", rev = "7cff70bbcbbc62001b465603ca1ea88edd668704" }
+
+# Bash configuration
+[[language]]
+name = "bash"
+scope = "source.bash"
+injection-regex = "(shell|bash|zsh|sh)"
+file-types = [
+  "sh",
+  "bash",
+  "ash",
+  "dash",
+  "ksh",
+  "mksh",
+  "zsh",
+  "zshenv",
+  "zlogin",
+  "zlogout",
+  "zprofile",
+  "zshrc",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  "Renviron",
+  "zsh-theme",
+  "cshrc",
+  "tcshrc",
+  "bashrc_Apple_Terminal",
+  "zshrc_Apple_Terminal",
+  { glob = "tmux.conf" },
+  { glob = ".bash_history" },
+  { glob = ".bash_login" },
+  { glob = ".bash_logout" },
+  { glob = ".bash_profile" },
+  { glob = ".bashrc" },
+  { glob = ".profile" },
+  { glob = ".zshenv" },
+  { glob = ".zlogin" },
+  { glob = ".zlogout" },
+  { glob = ".zprofile" },
+  { glob = ".zshrc" },
+  { glob = ".zimrc" },
+  { glob = "APKBUILD" },
+  { glob = ".bash_aliases" },
+  { glob = ".Renviron" },
+  { glob = ".xprofile" },
+  { glob = ".xsession" },
+  { glob = ".xsessionrc" },
+  { glob = ".yashrc" },
+  { glob = ".yash_profile" },
+  { glob = ".hushlogin" },
+]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = ["bash-language-server"]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "bash"
+source = { git = "https://github.com/tree-sitter/tree-sitter-bash", rev = "f8fb3274f72a30896075585b32b0c54cad65c086" }

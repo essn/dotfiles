@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Quick shortcuts
+alias f="y"
+alias e="$EDITOR"
+alias j="z"
+alias nu="XDG_DATA_HOME=$(mktemp -d) nu"
+
+# Tool replacements
+alias l='eza -l --icons'
+alias la='eza -la --icons'
+alias ll='eza -l --icons'
+alias lt='eza -l --icons --tree'
+alias cat='bat'
+alias find='fd'
+alias rm="rimraf"
+
+# Git aliases
+alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git log'
+alias gp='git push'
+alias gpl='git pull'
+alias gs='git status'
+alias gb='git branch'
+
+# Directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Safety nets
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'

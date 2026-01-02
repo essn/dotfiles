@@ -1,0 +1,30 @@
+[user]
+   signingkey = "{{ .chezmoi.config.data.ssh_signing_key }}"
+   name = Jesse Pledger
+   email = "{{ .chezmoi.config.data.email }}"
+
+[init]
+    defaultBranch = main
+
+[gpg]
+    format = ssh
+
+[commit]
+   gpgsign = true
+
+[core]
+    pager = delta
+	excludesFile = ~/.gitignore
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictStyle = zdiff3
+
+[includeIf "gitdir:{{ .chezmoi.sourceDir }}"]
+    path = "{{ .chezmoi.sourceDir }}/.gitconfig"

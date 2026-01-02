@@ -1,0 +1,54 @@
+# Mise
+eval "$(mise activate bash)"
+
+# Starship prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
+
+# Zoxide - smart cd
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init bash)"
+fi
+
+# Direnv - auto-load environment variables
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# fzf - fuzzy finder
+if command -v fzf &> /dev/null; then
+    eval "$(fzf --bash)"
+
+    # Use fd for fzf if available
+    if command -v fd &> /dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+
+    # Use bat for preview if available
+    if command -v bat &> /dev/null; then
+        export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+    fi
+fi
+
+# Atuin - magical shell history
+if command -v atuin &> /dev/null; then
+    eval "$(atuin init bash)"
+    eval "$(atuin gen-completion --shell bash)"
+fi
+
+# Chezmoi - dotfiles management
+if command -v chezmoi &> /dev/null; then
+    eval "$(chezmoi completion bash)"
+fi
+
+# Exercism - coding exercises
+if command -v exercism &> /dev/null; then
+    eval "$(exercism completion bash)"
+fi
+
+# Just - command runner
+if command -v just &> /dev/null; then
+    eval "$(just --completions bash)"
+fi
