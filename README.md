@@ -5,7 +5,7 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io).
 ## Setup
 
 ```bash
-chezmoi init https://github.com/yourusername/dotfiles.git
+chezmoi init https://github.com/essn/dotfiles.git
 chezmoi apply
 ```
 
