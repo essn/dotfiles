@@ -5,6 +5,7 @@ alias f="y"
 alias e="$EDITOR"
 alias j="z"
 alias nu="XDG_DATA_HOME=$(mktemp -d) nu"
+alias slj="zellij"
 
 # Tool replacements
 alias l='eza -l --icons'
