@@ -68,7 +68,7 @@ kubectl = "latest"
 k9s = "latest"
 
 # Security & secrets management
-bitwarden = "latest"
+"cargo:rbw" = "latest"
 
 # AI tools
 claude = { version = "latest", bin = "claude", platforms = """

@@ -3,6 +3,10 @@ abbr -a f y
 abbr -a e '$EDITOR'
 abbr -a j z
 
+# Bitwarden abbreviations
+abbr -a bwu "rbw unlock"
+abbr -a bwl "rbw lock"
+
 # Git abbreviations
 abbr -a g git
 abbr -a ga 'git add'

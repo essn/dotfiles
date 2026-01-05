@@ -54,6 +54,10 @@ backend = "cargo:helix"
 version = "0.14.10"
 backend = "cargo:procs"
 
+[[tools."cargo:rbw"]]
+version = "1.15.0"
+backend = "cargo:rbw"
+
 [[tools."cargo:ripgrep"]]
 version = "15.1.0"
 backend = "cargo:ripgrep"

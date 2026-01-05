@@ -54,3 +54,8 @@ end
 if command -q just
     just --completions fish | source
 end
+
+# rbw - Bitwarden CLI wrapper
+if command -q rbw
+    rbw gen-completions fish | source
+end
