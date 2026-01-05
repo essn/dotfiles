@@ -13,4 +13,8 @@ chezmoi apply
 
 - **Shell**: bash, fish
 - **Editor**: neovim, helix
-- **Tools**: git, starship, mise, zellij, distrobox
+- **Terminal**: wezterm, zellij
+- **Dev Tools**: mise, gh, lazygit, just, direnv
+- **Shell Tools**: starship, zoxide, atuin, eza, ripgrep, fd, bat, yazi
+- **System**: distrobox, kubectl, k9s, terraform
+- **Other**: rbw, claude
