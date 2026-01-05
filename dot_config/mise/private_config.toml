@@ -12,6 +12,7 @@ pipx = "latest"
 bun = "latest"
 
 # Language servers
+lua-language-server = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:@ansible/ansible-language-server" = "latest"
 "npm:yaml-language-server" = "latest"
