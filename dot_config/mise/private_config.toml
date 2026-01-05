@@ -9,6 +9,7 @@ python = "latest"
 "npm:typescript" = "latest"
 uv = "latest"
 pipx = "latest"
+bun = "latest"
 
 # Language servers
 "npm:typescript-language-server" = "latest"
@@ -88,3 +89,6 @@ url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d
 [settings]
 # Use symlinks instead of copying for better performance
 experimental = true
+
+[settings.npm]
+package_manager = "bun"
