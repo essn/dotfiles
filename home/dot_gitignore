@@ -50,3 +50,7 @@ tmp/*
 xclips/*
 xcmds/*
 var/*
+
+# Claude generated files
+CLAUDE.md
+.claude/*
