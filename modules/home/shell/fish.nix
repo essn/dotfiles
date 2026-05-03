@@ -19,6 +19,9 @@
     '';
 
     interactiveShellInit = ''
+      # Set Bitwarden SSH socket
+      set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+
       # Editor: prefer hx, fall back through nvim → vim → nano
       if command -q hx
           set -gx EDITOR hx
@@ -45,9 +48,6 @@
       set -gx XDG_DATA_HOME ~/.local/share
       set -gx XDG_CACHE_HOME ~/.cache
       set -gx XDG_STATE_HOME ~/.local/state
-
-      # Bitwarden SSH agent socket — update if your socket path differs
-      set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
 
       set -gx CLICOLOR 1
 
@@ -114,6 +114,7 @@
       "...." = "cd ../../..";
 
       # Safety nets
+      rm = "rm -i";
       cp = "cp -i";
       mv = "mv -i";
     };

@@ -73,9 +73,6 @@
         export TERM=xterm-256color
       fi
 
-      # Bitwarden SSH agent socket — update if your socket path differs
-      export SSH_AUTH_SOCK="$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
-
       # Yazi file manager wrapper — preserves cwd on exit
       y() {
         local tmp cwd
@@ -148,5 +145,6 @@
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_STATE_HOME  = "$HOME/.local/state";
     CLICOLOR        = "1";
+    SSH_AUTH_SOCK   = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   };
 }

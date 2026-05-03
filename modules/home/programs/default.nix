@@ -2,6 +2,7 @@
   imports = [
     ./git.nix
     ./mise.nix
+    ./ssh.nix
     ./starship.nix
     ./ghostty.nix
     ./neovim.nix
