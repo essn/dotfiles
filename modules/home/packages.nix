@@ -39,6 +39,7 @@
     cilium-cli
     k9s
     opentofu
+    ansible
 
     # Developer tools
     just
