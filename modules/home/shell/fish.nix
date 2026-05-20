@@ -78,11 +78,18 @@
 
     shellAbbrs = {
       # Quick shortcuts
-      f   = "y";
-      e   = "$EDITOR";
-      j   = "z";
-      slj = "zellij";
-      lg  = "lazygit";
+      f    = "y";
+      e    = "$EDITOR";
+      n    = "nvim";
+      j    = "z";
+      slj  = "zellij";
+      lg   = "lazygit";
+      k    = "kubectl";
+      cclb = "pbcopy < /dev/null";
+
+      # AGE
+      age-enc = "age -R ~/.config/age/recipients.txt";
+      age-dec = "age -d -i ~/.config/age/identity.txt";
 
       # Bitwarden
       bwu = "rbw unlock";

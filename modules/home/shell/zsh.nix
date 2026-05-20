@@ -17,6 +17,7 @@
       e    = "$EDITOR";
       j    = "z";
       lg   = "lazygit";
+      k    = "kubectl";
 
       # Tool replacements
       l    = "eza -l --icons";
