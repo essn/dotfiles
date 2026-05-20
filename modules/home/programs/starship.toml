@@ -200,3 +200,10 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+[kubernetes]
+format = '[|](dimmed white)[$symbol$context( \($namespace\))]($style) in '
+symbol = 'K8s'
+style = 'cyan bold'
+
+[kubernetes.context_aliases]
