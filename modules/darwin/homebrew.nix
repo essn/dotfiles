@@ -19,9 +19,10 @@
       "tcl-tk"
       "libxml2"
       "libffi"
+      "cmake"
     ];
-    # casks = [
-    #   "ghostty"
-    # ];
+    casks = [
+      # "ghostty"
+    ];
   };
 }

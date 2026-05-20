@@ -39,7 +39,11 @@
     cilium-cli
     k9s
     opentofu
+    terraform-ls
     ansible
+    helmfile
+    kubectx
+    kubeseal
 
     # Developer tools
     just
@@ -47,5 +51,17 @@
 
     # Secrets
     rbw
+    pinentry-curses
+
+    # Reverse Engineering
+    ghidra
+    radare2
+    apktool
+    dex2jar
+
+    # Encryption utilities
+    age
+    age-plugin-yubikey
+    yubikey-manager
   ];
 }
