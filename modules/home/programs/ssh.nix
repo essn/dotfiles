@@ -4,7 +4,7 @@
     enableDefaultConfig = false;
 
     # Include OrbStack's auto-generated host config — must be first
-    includes = [ "~/.orbstack/ssh/config" ];
+    includes = [ "~/.orbstack/ssh/config" "~/.ssh/config.d/pve" ];
 
     # Use Bitwarden as the SSH agent for all connections
     matchBlocks."*" = {
