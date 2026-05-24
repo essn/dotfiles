@@ -11,6 +11,10 @@
     hyperfine
     git-extras
 
+    # Nix utils
+    statix
+    nixfmt
+
     # Modern CLI replacements (used by shell aliases)
     ripgrep
     fd
