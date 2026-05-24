@@ -42,6 +42,17 @@
       gs = "git status";
       gb = "git branch";
 
+      # AGE encryption
+      age-enc = "age -R ~/.config/age/recipients.txt";
+      age-dec = "age -d -i ~/.config/age/identity.txt";
+
+      # Bitwarden
+      bwu = "rbw unlock";
+      bwl = "rbw lock";
+
+      # Clipboard
+      cclb = "pbcopy < /dev/null";
+
       # Directory navigation
       ".." = "cd ..";
       "..." = "cd ../..";
