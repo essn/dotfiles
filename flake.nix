@@ -27,7 +27,7 @@
       # Absolute path to the cloned repo — used for out-of-store symlinks so
       # files like CLAUDE.md can be edited without running `just rebuild`.
       # Update this if you clone to a different location.
-      dotfilesDir = "${homeDirectory}/code/dots/dotfiles-nix";
+      dotfilesDir = "${homeDirectory}/.dotfiles";
     in
     {
       darwinConfigurations."jmbp" = nix-darwin.lib.darwinSystem {
