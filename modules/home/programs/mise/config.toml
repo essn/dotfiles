@@ -43,4 +43,3 @@ lua-language-server = "3.17.1"
 
 # python utilities
 "pipx:ufbt" = "latest"
-cmake = "latest"
