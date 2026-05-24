@@ -21,8 +21,8 @@ macOS system configuration managed with [nix-darwin](https://github.com/LnL7/nix
 
 **1. Clone the repo:**
 ```bash
-git clone <repo-url> ~/dotfiles-nix
-cd ~/dotfiles-nix
+git clone <repo-url> ~/.dotfiles
+cd ~/.dotfiles
 ```
 
 **2. Copy your Neovim config** (home-manager symlinks this directory):
