@@ -21,6 +21,7 @@
       "libxml2"
       "libffi"
       "cmake"
+      "just"
     ];
     casks = [
       "ghostty"
