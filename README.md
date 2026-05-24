@@ -69,22 +69,28 @@ hosts/
     └── home.nix        # Host-specific home-manager entry point
 
 modules/
+├── claude/
+│   ├── default.nix     # Symlinks ~/.claude/CLAUDE.md out-of-store for live edits
+│   └── CLAUDE.md       # Global Claude.ai preferences
 ├── darwin/
 │   ├── default.nix           # Imports all darwin modules
 │   ├── system-defaults.nix   # macOS preferences (key repeat, Finder, Dock, etc.)
-│   └── homebrew.nix          # GUI apps via Homebrew casks
+│   └── homebrew.nix          # Build essentials + GUI apps via Homebrew casks
 └── home/
     ├── default.nix           # Imports all home modules
     ├── packages.nix          # CLI tools always present on the host
     ├── shell/
+    │   ├── default.nix       # Imports zsh and fish
     │   ├── zsh.nix           # Zsh config, aliases, functions (host shell)
     │   └── fish.nix          # Fish config, abbreviations, functions (Zellij shell)
     └── programs/
         ├── default.nix       # Shell-integrated tools (mise, zoxide, fzf, direnv, atuin)
         ├── git.nix           # Git + delta
-        ├── starship.nix      # Prompt
-        ├── ghostty.nix       # Terminal emulator config
-        ├── neovim.nix        # Neovim (config symlinked from programs/nvim/)
+        ├── mise.nix          # Mise (language runtime versioning)
+        ├── ssh.nix           # SSH agent (Bitwarden)
+        ├── starship.nix      # Prompt + starship.toml
+        ├── ghostty.nix       # Terminal emulator
+        ├── neovim.nix        # Neovim editor
         ├── helix.nix         # Helix editor + languages.toml
         ├── zellij.nix        # Terminal multiplexer
         └── yazi.nix          # File manager
