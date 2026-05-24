@@ -18,6 +18,8 @@
       j    = "z";
       lg   = "lazygit";
       k    = "kubectl";
+      slj = "zellij";
+      n = "nvim";
 
       # Tool replacements
       l    = "eza -l --icons";
