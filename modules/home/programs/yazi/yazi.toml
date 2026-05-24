@@ -1,9 +1,2 @@
-[[plugin.prepend_fetchers]]
-id = "git"
-url = "*"
-run = "git"
-
-[[plugin.prepend_fetchers]]
-id = "git"
-url = "*/"
-run = "git"
+[plugins]
+prepend_preloaders = [{ url = "git", run = "git" }]
