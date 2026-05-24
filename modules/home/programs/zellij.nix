@@ -1,7 +1,7 @@
-{ ... }: {
+{ ... }:
+{
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
   };
 
   # Config managed as a plain KDL file — see zellij/config.kdl in this directory
