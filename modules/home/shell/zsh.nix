@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.zsh = {
     enable = true;
 
@@ -13,37 +14,37 @@
 
     shellAliases = {
       # Quick shortcuts
-      f    = "y";
-      e    = "$EDITOR";
-      j    = "z";
-      lg   = "lazygit";
-      k    = "kubectl";
+      f = "y";
+      e = "$EDITOR";
+      j = "z";
+      lg = "lazygit";
+      k = "kubectl";
       slj = "zellij";
       n = "nvim";
 
       # Tool replacements
-      l    = "eza -l --icons";
-      la   = "eza -la --icons";
-      ll   = "eza -l --icons";
-      lt   = "eza -l --icons --tree";
-      cat  = "bat";
+      l = "eza -l --icons";
+      la = "eza -la --icons";
+      ll = "eza -l --icons";
+      lt = "eza -l --icons --tree";
+      cat = "bat";
       find = "fd";
 
       # Git
-      g   = "git";
-      ga  = "git add";
-      gc  = "git commit";
+      g = "git";
+      ga = "git add";
+      gc = "git commit";
       gco = "git checkout";
-      gd  = "git diff";
-      gl  = "git log";
-      gp  = "git push";
+      gd = "git diff";
+      gl = "git log";
+      gp = "git push";
       gpl = "git pull";
-      gs  = "git status";
-      gb  = "git branch";
+      gs = "git status";
+      gb = "git branch";
 
       # Directory navigation
-      ".."   = "cd ..";
-      "..."  = "cd ../..";
+      ".." = "cd ..";
+      "..." = "cd ../..";
       "...." = "cd ../../..";
 
       # Safety nets
@@ -144,10 +145,10 @@
 
   home.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_CACHE_HOME  = "$HOME/.cache";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-    CLICOLOR        = "1";
-    SSH_AUTH_SOCK   = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    CLICOLOR = "1";
+    SSH_AUTH_SOCK = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   };
 }

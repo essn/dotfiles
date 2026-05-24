@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # Core utilities
     wget
@@ -22,14 +23,14 @@
     eza
 
     # Text & data viewers
-    glow        # markdown viewer
-    tealdeer    # tldr client
+    glow # markdown viewer
+    tealdeer # tldr client
 
     # System monitoring & disk tools
-    dust     # dust — du replacement
-    procs       # ps replacement
-    bottom      # btm — system monitor
-    duf         # df replacement
+    dust # dust — du replacement
+    procs # ps replacement
+    bottom # btm — system monitor
+    duf # df replacement
 
     # Git extras
     git-lfs
