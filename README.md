@@ -75,7 +75,8 @@ modules/
 ├── darwin/
 │   ├── default.nix           # Imports all darwin modules
 │   ├── system-defaults.nix   # macOS preferences (key repeat, Finder, Dock, etc.)
-│   └── homebrew.nix          # Build essentials + GUI apps via Homebrew casks
+│   ├── homebrew.nix          # Build essentials + GUI apps via Homebrew casks
+│   └── fixes.nix             # Workarounds for nix-darwin regressions
 └── home/
     ├── default.nix           # Imports all home modules
     ├── packages.nix          # CLI tools always present on the host
