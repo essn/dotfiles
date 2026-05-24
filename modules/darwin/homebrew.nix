@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     enable = true;
     onActivation = {
@@ -22,7 +23,8 @@
       "cmake"
     ];
     casks = [
-      # "ghostty"
+      "ghostty"
+      "cmux"
     ];
   };
 }
