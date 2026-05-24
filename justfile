@@ -22,6 +22,7 @@ diff: build
 gc:
     nix-collect-garbage -d
     nix store optimise
+    mise prune
 
 # Check flake for errors
 check:
