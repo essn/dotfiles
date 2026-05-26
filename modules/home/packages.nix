@@ -11,6 +11,7 @@
     shellcheck
     hyperfine
     git-extras
+    doggo
 
     # Nix utils
     statix
