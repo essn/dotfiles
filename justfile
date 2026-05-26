@@ -27,3 +27,21 @@ gc:
 # Check flake for errors
 check:
     nix flake check
+
+# Scan the whole Nix store for corruption (re-hashes file contents — can be slow)
+nix-check:
+    nix-store --verify --check-contents
+
+# Verify and repair any corrupted, substitutable store paths
+[confirm("This will sudo-repair the Nix store. Continue?")]
+nix-repair:
+    sudo nix-store --verify --check-contents --repair
+
+# Repair a single store path by re-realising it: `just nix-repair-path /nix/store/...`
+nix-repair-path path:
+    sudo nix-store --realise --repair {{path}}
+
+# macOS: First Aid on the dedicated Nix Store APFS volume
+[macos]
+nix-disk-check:
+    diskutil verifyVolume "Nix Store"
