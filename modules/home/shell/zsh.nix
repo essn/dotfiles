@@ -65,6 +65,9 @@
     };
 
     initContent = ''
+      # Homebrew
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+
       # OrbStack — CLI tools and shell integration
       source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 

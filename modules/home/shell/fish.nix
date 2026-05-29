@@ -6,6 +6,9 @@
       # Disable greeting
       set -g fish_greeting
 
+      # Homebrew
+      eval (/opt/homebrew/bin/brew shellenv fish)
+
       # Path additions
       fish_add_path -gP ~/.local/bin
       fish_add_path -gP ~/bin
