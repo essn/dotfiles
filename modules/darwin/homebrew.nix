@@ -25,12 +25,10 @@
       "libxml2"
       "libffi"
       "cmake"
-      "ncspot"
       "retlehs/tap/quien"
       "qemu"
       "e2fsprogs"
       "php"
-      "cmatrix"
     ];
     casks = [
       "ghostty"

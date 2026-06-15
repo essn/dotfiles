@@ -27,6 +27,8 @@
     # Text & data viewers
     glow # markdown viewer
     tealdeer # tldr client
+    ncspot
+    cmatrix
 
     # System monitoring & disk tools
     dust # dust — du replacement
