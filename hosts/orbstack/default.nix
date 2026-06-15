@@ -5,7 +5,9 @@
 
   networking.hostName = "orbstack";
 
-  # OrbStack provides DNS via its guest integration layer
+  # OrbStack handles DNS via its guest integration layer; resolved conflicts
+  # with pointing resolv.conf at the host-provided path
+  services.resolved.enable = false;
   networking.resolvconf.enable = false;
   environment.etc."resolv.conf".source = "/opt/orbstack-guest/etc/resolv.conf";
 
