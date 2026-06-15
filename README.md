@@ -33,6 +33,18 @@ nixos-rebuild switch --flake .#nixos
 
 Add `hardware-configuration.nix` to the `imports` list in `hosts/nixos/default.nix`, then commit it. After the first switch, `just rebuild-nixos` works.
 
+### OrbStack
+
+The `orbstack` host (`hosts/orbstack`) uses the NixOS LXC container module instead of a generated hardware config — no `nixos-generate-config` needed.
+
+> **Note:** `hosts/orbstack/default.nix` hardcodes `networking.hostName = "orbstack"`. If your OrbStack machine has a different name, update that value before applying.
+
+```bash
+git clone <repo-url> ~/dotfiles
+cd ~/dotfiles
+nixos-rebuild switch --flake .#orbstack
+```
+
 ## Personal config (not tracked)
 
 Create `~/.config/git/local` with your identity:
