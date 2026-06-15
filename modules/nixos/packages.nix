@@ -17,7 +17,8 @@
     tcl
     libxml2
     libffi
-    python3 # required by some configure scripts (e.g. OpenSSL) as `python`
+    python3
+    (writeShellScriptBin "python" ''exec ${python3}/bin/python3 "$@"'')
   ];
 
   # Allow pre-built binaries (Rust, Bun, JDK, etc.) to run on NixOS.
