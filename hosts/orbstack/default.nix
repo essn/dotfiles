@@ -1,6 +1,7 @@
 { pkgs, modulesPath, ... }: {
   imports = [
     "${modulesPath}/virtualisation/lxc-container.nix"
+    ../../modules/nixos/packages.nix
   ];
 
   networking.hostName = "orbstack";

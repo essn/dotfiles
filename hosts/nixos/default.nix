@@ -1,7 +1,9 @@
 { pkgs, ... }: {
-  # Import hardware-configuration.nix after running `nixos-generate-config`
-  # on the machine:
-  #   imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ../../modules/nixos/packages.nix
+    # Add hardware-configuration.nix after running `nixos-generate-config`:
+    #   ./hardware-configuration.nix
+  ];
 
   networking.hostName = "nixos";
 
