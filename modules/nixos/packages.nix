@@ -17,5 +17,18 @@
     tcl
     libxml2
     libffi
+    python3 # required by some configure scripts (e.g. OpenSSL) as `python`
   ];
+
+  # Allow pre-built binaries (Rust, Bun, JDK, etc.) to run on NixOS.
+  # These binaries hardcode /lib/ld-linux-*.so.* which doesn't exist here;
+  # nix-ld provides a shim at that path pointing into the Nix store.
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      openssl
+      zlib
+    ];
+  };
 }
