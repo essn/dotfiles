@@ -26,6 +26,10 @@ build-nixos:
 diff: build
     nix store diff-closures /run/current-system ./result
 
+# Show diff for NixOS config (run on the nixos host)
+diff-nixos: build-nixos
+    nix store diff-closures /run/current-system ./result
+
 # Garbage collect old generations
 gc:
     nix-collect-garbage -d
