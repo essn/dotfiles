@@ -2,6 +2,10 @@
 rebuild:
     darwin-rebuild switch --flake .#jmbp
 
+# Rebuild NixOS configuration (run on the nixos host)
+rebuild-nixos:
+    nixos-rebuild switch --flake .#nixos
+
 # Update all flake inputs
 update:
     nix flake update
@@ -13,6 +17,10 @@ update-input input:
 # Build without switching (useful for checking before applying)
 build:
     darwin-rebuild build --flake .#jmbp
+
+# Build NixOS config without switching (run on the nixos host)
+build-nixos:
+    nixos-rebuild build --flake .#nixos
 
 # Show diff between current and new config
 diff: build
