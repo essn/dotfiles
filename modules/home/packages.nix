@@ -12,6 +12,7 @@
     hyperfine
     git-extras
     doggo
+    socat
 
     # Nix utils
     statix
