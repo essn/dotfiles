@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     # Core utilities
@@ -63,12 +63,14 @@
     # Reverse Engineering
     ghidra
     radare2
-    apktool
     dex2jar
 
     # Encryption utilities
     age
     age-plugin-yubikey
     yubikey-manager
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    # aapt (apktool dependency) only supports x86_64-linux, not aarch64-linux
+    apktool
   ];
 }
