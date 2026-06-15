@@ -5,7 +5,11 @@
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
+      extraFlags = [ "--force" ];
     };
+    taps = [
+      "retlehs/tap"
+    ];
     brews = [
       # Build essentials — kept in Homebrew so Mise can find them when
       # compiling language runtimes (Python, Ruby, etc.) from source
@@ -22,10 +26,16 @@
       "libffi"
       "cmake"
       "just"
+      "ncspot"
+      "retlehs/tap/quien"
+      "qemu"
+      "e2fsprogs"
+      "cmatrix"
     ];
     casks = [
       "ghostty"
       "cmux"
+      "zap"
     ];
   };
 }
