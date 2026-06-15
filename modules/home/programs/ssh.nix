@@ -1,14 +1,17 @@
-{ ... }: {
+{ pkgs, lib, ... }: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
 
-    # Include OrbStack's auto-generated host config — must be first
-    includes = [ "~/.orbstack/ssh/config" "~/.ssh/config.d/pve" ];
+    # OrbStack and PVE includes are macOS-only
+    includes = lib.optionals pkgs.stdenv.isDarwin [
+      "~/.orbstack/ssh/config"
+      "~/.ssh/config.d/pve"
+    ];
 
-    # Use Bitwarden as the SSH agent for all connections
-    matchBlocks."*" = {
-      identityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+    # Use Bitwarden as the SSH agent for all connections (macOS only)
+    matchBlocks = lib.optionalAttrs pkgs.stdenv.isDarwin {
+      "*".identityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
     };
   };
 }
