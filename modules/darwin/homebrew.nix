@@ -25,11 +25,11 @@
       "libxml2"
       "libffi"
       "cmake"
-      "just"
       "ncspot"
       "retlehs/tap/quien"
       "qemu"
       "e2fsprogs"
+      "php"
       "cmatrix"
     ];
     casks = [
