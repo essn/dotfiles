@@ -66,5 +66,17 @@
           })
         ];
       };
+
+      nixosConfigurations."orbstack" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./hosts/orbstack
+          home-manager.nixosModules.home-manager
+          (mkHmConfig {
+            homeDirectory = "/home/${username}";
+            hostHome = ./hosts/orbstack/home.nix;
+          })
+        ];
+      };
     };
 }
