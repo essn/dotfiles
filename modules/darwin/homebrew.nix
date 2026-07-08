@@ -8,7 +8,6 @@
       extraFlags = [ "--force" ];
     };
     taps = [
-      "retlehs/tap"
     ];
     brews = [
       # Build essentials — kept in Homebrew so Mise can find them when
@@ -25,15 +24,22 @@
       "libxml2"
       "libffi"
       "cmake"
-      "retlehs/tap/quien"
       "qemu"
       "e2fsprogs"
       "php"
+      "leiningen"
+      "coreutils"
+      "amass"
+      "subfinder"
+      "llvm" # Faustlive, but keeping
     ];
     casks = [
       "ghostty"
       "cmux"
       "zap"
+      "zed"
+      "supercollider"
+      "blackhole-16ch"
     ];
   };
 }
