@@ -92,9 +92,6 @@
         export TERM=xterm-256color
       fi
 
-      # Faust
-      export PATH=$HOME/Faust/bin:$PATH
-
       # Yazi file manager wrapper — preserves cwd on exit
       y() {
         local tmp cwd
