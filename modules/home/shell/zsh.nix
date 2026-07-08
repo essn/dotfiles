@@ -21,6 +21,7 @@
       k = "kubectl";
       slj = "zellij";
       n = "nvim";
+      ptpy = "ptpy";
 
       # Tool replacements
       l = "eza -l --icons";
@@ -59,7 +60,7 @@
       "...." = "cd ../../..";
 
       # Safety nets
-      rm = "rm -i";
+      rm = "rimraf -i";
       cp = "cp -i";
       mv = "mv -i";
     };
@@ -90,6 +91,9 @@
       if ! infocmp "$TERM" &>/dev/null 2>&1; then
         export TERM=xterm-256color
       fi
+
+      # Faust
+      export PATH=$HOME/Faust/bin:$PATH
 
       # Yazi file manager wrapper — preserves cwd on exit
       y() {

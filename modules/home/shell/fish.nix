@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.fish = {
     enable = true;
 
@@ -81,14 +82,15 @@
 
     shellAbbrs = {
       # Quick shortcuts
-      f    = "y";
-      e    = "$EDITOR";
-      n    = "nvim";
-      j    = "z";
-      slj  = "zellij";
-      lg   = "lazygit";
-      k    = "kubectl";
+      f = "y";
+      e = "$EDITOR";
+      n = "nvim";
+      j = "z";
+      slj = "zellij";
+      lg = "lazygit";
+      k = "kubectl";
       cclb = "pbcopy < /dev/null";
+      ptpy = "ptpython";
 
       # AGE
       age-enc = "age -R ~/.config/age/recipients.txt";
@@ -99,32 +101,32 @@
       bwl = "rbw lock";
 
       # Tool replacements
-      l   = "eza -l --icons";
-      la  = "eza -la --icons";
-      ll  = "eza -l --icons";
-      lt  = "eza -l --icons --tree";
+      l = "eza -l --icons";
+      la = "eza -la --icons";
+      ll = "eza -l --icons";
+      lt = "eza -l --icons --tree";
       cat = "bat";
       find = "fd";
 
       # Git
-      g   = "git";
-      ga  = "git add";
-      gc  = "git commit";
+      g = "git";
+      ga = "git add";
+      gc = "git commit";
       gco = "git checkout";
-      gd  = "git diff";
-      gl  = "git log";
-      gp  = "git push";
+      gd = "git diff";
+      gl = "git log";
+      gp = "git push";
       gpl = "git pull";
-      gs  = "git status";
-      gb  = "git branch";
+      gs = "git status";
+      gb = "git branch";
 
       # Directory navigation
-      ".."   = "cd ..";
-      "..."  = "cd ../..";
+      ".." = "cd ..";
+      "..." = "cd ../..";
       "...." = "cd ../../..";
 
       # Safety nets
-      rm = "rm -i";
+      rm = "rimraf -i";
       cp = "cp -i";
       mv = "mv -i";
     };
