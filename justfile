@@ -6,9 +6,14 @@ rebuild:
 rebuild-nixos:
     nixos-rebuild switch --flake .#nixos
 
-# Rebuild jumpbox home-manager config (run on the jumpbox host)
+# First-time jumpbox setup — home-manager isn't installed yet, so run it
+# straight from the flake input (run on the jumpbox host)
+bootstrap-jumpbox:
+    NIX_CONFIG="experimental-features = nix-command flakes" nix run home-manager/master -- switch --flake .#jumpbox
+
+# Rebuild jumpbox home-manager config, once bootstrapped (run on the jumpbox host)
 rebuild-jumpbox:
-    home-manager switch --extra-experimental-features 'nix-command flakes' --flake .#jumpbox
+    NIX_CONFIG="experimental-features = nix-command flakes" home-manager switch --flake .#jumpbox
 
 # Update all flake inputs
 update:
@@ -28,7 +33,7 @@ build-nixos:
 
 # Build jumpbox home-manager config without switching (run on the jumpbox host)
 build-jumpbox:
-    home-manager build --extra-experimental-features 'nix-command flakes' --flake .#jumpbox
+    NIX_CONFIG="experimental-features = nix-command flakes" home-manager build --flake .#jumpbox
 
 # Show diff between current and new config
 diff: build
