@@ -8,7 +8,7 @@ rebuild-nixos:
 
 # Rebuild jumpbox home-manager config (run on the jumpbox host)
 rebuild-jumpbox:
-    home-manager switch --flake .#jumpbox
+    home-manager switch --extra-experimental-features 'nix-command flakes' --flake .#jumpbox
 
 # Update all flake inputs
 update:
@@ -28,7 +28,7 @@ build-nixos:
 
 # Build jumpbox home-manager config without switching (run on the jumpbox host)
 build-jumpbox:
-    home-manager build --flake .#jumpbox
+    home-manager build --extra-experimental-features 'nix-command flakes' --flake .#jumpbox
 
 # Show diff between current and new config
 diff: build
