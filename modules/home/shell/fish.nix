@@ -14,6 +14,7 @@
       fish_add_path -gP ~/.local/bin
       fish_add_path -gP ~/bin
       fish_add_path -gP ~/.cargo/bin
+      set -gx PATH $PATH $HOME/.krew/bin
 
       # OrbStack — CLI tools
       fish_add_path -aP ~/.orbstack/bin

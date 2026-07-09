@@ -41,6 +41,21 @@
             home.homeDirectory = lib.mkForce homeDirectory;
           };
       };
+
+      # Standalone home-manager config for non-NixOS hosts (Nix installed on
+      # top of another distro) — no system-level module to manage.
+      mkStandaloneHome = { system, username, homeDirectory, hostHome }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { inherit system; };
+          extraSpecialArgs = { dotfilesDir = mkDotfilesDir homeDirectory; };
+          modules = [
+            hostHome
+            {
+              home.username = username;
+              home.homeDirectory = homeDirectory;
+            }
+          ];
+        };
     in
     {
       darwinConfigurations."jmbp" = nix-darwin.lib.darwinSystem {
@@ -77,6 +92,13 @@
             hostHome = ./hosts/orbstack/home.nix;
           })
         ];
+      };
+
+      homeConfigurations."jumpbox" = mkStandaloneHome {
+        system = "x86_64-linux";
+        username = "jumpbox";
+        homeDirectory = "/home/jumpbox";
+        hostHome = ./hosts/jumpbox/home.nix;
       };
     };
 }

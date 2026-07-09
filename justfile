@@ -6,6 +6,10 @@ rebuild:
 rebuild-nixos:
     nixos-rebuild switch --flake .#nixos
 
+# Rebuild jumpbox home-manager config (run on the jumpbox host)
+rebuild-jumpbox:
+    home-manager switch --flake .#jumpbox
+
 # Update all flake inputs
 update:
     nix flake update
@@ -21,6 +25,10 @@ build:
 # Build NixOS config without switching (run on the nixos host)
 build-nixos:
     nixos-rebuild build --flake .#nixos
+
+# Build jumpbox home-manager config without switching (run on the jumpbox host)
+build-jumpbox:
+    home-manager build --flake .#jumpbox
 
 # Show diff between current and new config
 diff: build

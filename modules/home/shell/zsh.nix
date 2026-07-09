@@ -83,6 +83,9 @@
         export EDITOR=nano VISUAL=nano
       fi
 
+      # Path
+      export PATH="$HOME/.krew/bin:$PATH"
+
       # Pager
       export PAGER=less
       export LESS='-R -F -X'
