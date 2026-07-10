@@ -61,19 +61,10 @@
       just
       watchexec
 
-      # DSP
-      ffmpeg
-      sox
-
       # Secrets
       rbw
       pinentry-curses
       sshpass
-
-      # Reverse Engineering
-      ghidra
-      radare2
-      dex2jar
 
       # Encryption utilities
       age
@@ -85,5 +76,14 @@
     ++ lib.optionals pkgs.stdenv.isDarwin [
       # aapt (apktool dependency) only supports x86_64-linux, not aarch64-linux
       apktool
+
+      # Reverse Engineering
+      ghidra
+      radare2
+      dex2jar
+
+      # DSP
+      ffmpeg
+      sox
     ];
 }

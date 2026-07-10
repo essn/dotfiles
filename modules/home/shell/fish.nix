@@ -7,8 +7,13 @@
       # Disable greeting
       set -g fish_greeting
 
-      # Homebrew
-      eval (/opt/homebrew/bin/brew shellenv fish)
+      # MacOS
+      if test $(uname) = "Darwin"
+        # Homebrew
+        eval (/opt/homebrew/bin/brew shellenv fish)
+        # OrbStack — CLI tools
+        fish_add_path -aP ~/.orbstack/bin
+      end
 
       # Path additions
       fish_add_path -gP ~/.local/bin
@@ -16,16 +21,16 @@
       fish_add_path -gP ~/.cargo/bin
       set -gx PATH $PATH $HOME/.krew/bin
 
-      # OrbStack — CLI tools
-      fish_add_path -aP ~/.orbstack/bin
-
       # Vi key bindings
       fish_vi_key_bindings
     '';
 
     interactiveShellInit = ''
-      # Set Bitwarden SSH socket
-      set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+      # MacOS
+      if test $(uname) = "Darwin"
+        # Set Bitwarden SSH socket
+        set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+      end
 
       # Editor: prefer hx, fall back through nvim → vim → nano
       if command -q hx

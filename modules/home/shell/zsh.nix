@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -66,11 +66,13 @@
     };
 
     initContent = ''
-      # Homebrew
-      eval "$(/opt/homebrew/bin/brew shellenv)"
+      if [ $(uname) = "Darwin" ]; then
+        # Homebrew
+        eval "$(/opt/homebrew/bin/brew shellenv)"
 
-      # OrbStack — CLI tools and shell integration
-      source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+        # OrbStack — CLI tools and shell integration
+        source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+      fi
 
       # Editor: prefer hx, fall back through nvim → vim → nano
       if command -v hx &>/dev/null; then
@@ -167,6 +169,8 @@
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_STATE_HOME = "$HOME/.local/state";
     CLICOLOR = "1";
+  }
+  // lib.optionalAttrs pkgs.stdenv.isDarwin {
     SSH_AUTH_SOCK = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   };
 }
