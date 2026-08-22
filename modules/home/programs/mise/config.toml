@@ -35,18 +35,31 @@ lua-language-server = "3.17.1"
 "pipx:python-lsp-server" = "1.14.0"
 "cargo:tree-sitter-cli" = "latest"
 
-# npm utilities
+# NPM utilities
 "npm:degit" = "latest"
 "npm:rimraf" = "6.1.3"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:@earendil-works/gondolin" = "latest"
+# "npm:@oh-my-pi/pi-coding-agent" = "latest"
 "npm:@electron/asar" = "latest"
 "npm:js-beautify" = "latest"
+"npm:wrangler" = "latest"
 
-# python utilities
+# Python utilities
 "pipx:ufbt" = "latest"
+
+# Rust utilities
+"cargo:wasm-pack" = "latest"
+"aqua:zola" = "latest"
+"aqua:watchexec/cargo-watch" = "latest"
 
 # Infra Tooling
 "aqua:cilium/hubble" = "1.17.3"
 cilium-cli = "0.19.4"
+
+# Data tooling
+"cargo:pqrs" = "latest"
+
+# TUIs
+"aqua:erikjuhani/basalt" = "latest"
+"github:can1357/oh-my-pi" = "latest"
