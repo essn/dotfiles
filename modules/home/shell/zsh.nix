@@ -206,8 +206,5 @@
   }
   // lib.optionalAttrs (pkgs.stdenv.isDarwin && profile == "full") {
     SSH_AUTH_SOCK = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
-  }
-  // lib.optionalAttrs (pkgs.stdenv.isDarwin && profile == "minimal") {
-    DOCKER_HOST = "unix://$HOME/.colima/default/docker.sock";
   };
 }

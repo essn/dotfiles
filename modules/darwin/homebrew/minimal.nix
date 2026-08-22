@@ -35,12 +35,6 @@
       "mole"
       "nono"
       "opencode"
-
-      # Docker via Colima (with QEMU for non-nested virtualization)
-      "colima"
-      "docker"
-      "docker-compose"
-      "qemu"
     ];
 
     casks = [
