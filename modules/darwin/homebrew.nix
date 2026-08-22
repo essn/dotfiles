@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   homebrew = {
     enable = true;
@@ -7,8 +7,11 @@
       cleanup = "zap";
       extraFlags = [ "--force" ];
     };
+
     taps = [
+      "anomalyco/tap"
     ];
+
     brews = [
       # Build essentials — kept in Homebrew so Mise can find them when
       # compiling language runtimes (Python, Ruby, etc.) from source
@@ -32,8 +35,17 @@
       "amass"
       "subfinder"
       "llvm" # Faustlive, but keeping
+      "go-parquet-tools"
+      "jupyterlab"
+      "hf"
+      "herdr"
+      "mole"
+      "nono"
+      "opencode"
     ];
+
     casks = [
+      "claude-code"
       "ghostty"
       "cmux"
       "zap"
