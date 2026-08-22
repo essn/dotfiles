@@ -35,13 +35,17 @@
       "mole"
       "nono"
       "opencode"
+
+      # Docker via Colima
+      "colima"
+      "docker"
+      "docker-compose"
     ];
 
     casks = [
       "claude-code"
       "ghostty"
       "cmux"
-      "orbstack"
     ];
   };
 }

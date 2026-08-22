@@ -97,8 +97,15 @@
         # Homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        # OrbStack — CLI tools and shell integration
-        source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+        ${
+          if profile == "full" then
+            ''
+              # OrbStack — CLI tools and shell integration (full profile only)
+              source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+            ''
+          else
+            ""
+        }
       fi
 
       # Editor: prefer hx, fall back through nvim → vim → nano
