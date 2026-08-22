@@ -1,4 +1,8 @@
-{ ... }:
+{
+  profile ? "full",
+  lib,
+  ...
+}:
 {
   system.defaults = {
     #   NSGlobalDomain = {
@@ -30,12 +34,22 @@
       SortDirection = 0; # descending
     };
 
-    #   dock = {
-    #     autohide = true;
-    #     show-recents = false;
-    #     minimize-to-application = true;
-    #     tilesize = 48;
-    #   };
+    # Dock settings - different for each profile
+    dock =
+      if profile == "minimal" then
+        {
+          autohide = true;
+          show-recents = false;
+          minimize-to-application = true;
+          tilesize = 48;
+          orientation = "left";
+          magnification = false; # Disable dock icon zoom on hover
+        }
+      else
+        {
+          # Full profile keeps default dock settings (commented out previously)
+          # Uncomment and customize if needed
+        };
 
     finder = {
       AppleShowAllFiles = true;
