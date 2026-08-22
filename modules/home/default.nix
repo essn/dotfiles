@@ -1,6 +1,10 @@
-{ ... }: {
+{
+  profile ? "full",
+  ...
+}:
+{
   imports = [
-    ./packages.nix
+    (import ./packages { inherit profile; })
     ./shell
     ./programs
     ../claude

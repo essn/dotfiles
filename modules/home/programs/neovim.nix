@@ -1,4 +1,11 @@
-{ config, lib, dotfilesDir, pkgs, ... }: {
+{
+  config,
+  lib,
+  dotfilesDir,
+  pkgs,
+  ...
+}:
+{
   home.packages = [ pkgs.neovim ];
 
   # Out-of-store symlink so edits to nvim/ take effect immediately without rebuilding.

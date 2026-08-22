@@ -1,8 +1,11 @@
-{ ... }:
+{
+  profile ? "full",
+  ...
+}:
 {
   imports = [
     ./system-defaults.nix
-    ./homebrew.nix
+    (import ./homebrew { inherit profile; })
     ./security.nix
   ];
 }

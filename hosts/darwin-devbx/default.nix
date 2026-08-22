@@ -10,7 +10,7 @@
   nix.enable = false;
 
   # Required for user-specific system.defaults and homebrew options
-  system.primaryUser = "jesse";
+  system.primaryUser = "darwin-devbx";
 
   system.stateVersion = 5;
 }

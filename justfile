@@ -2,6 +2,10 @@
 rebuild:
     darwin-rebuild switch --flake .#jmbp
 
+# Rebuild darwin-devbx system configuration (run on the devbx VM)
+rebuild-devbx:
+    darwin-rebuild switch --flake .#darwin-devbx
+
 # Rebuild NixOS configuration (run on the nixos host)
 rebuild-nixos:
     nixos-rebuild switch --flake .#nixos
@@ -27,6 +31,10 @@ update-input input:
 build:
     darwin-rebuild build --flake .#jmbp
 
+# Build darwin-devbx without switching
+build-devbx:
+    darwin-rebuild build --flake .#darwin-devbx
+
 # Build NixOS config without switching (run on the nixos host)
 build-nixos:
     nixos-rebuild build --flake .#nixos
@@ -37,6 +45,10 @@ build-jumpbox:
 
 # Show diff between current and new config
 diff: build
+    nix store diff-closures /run/current-system ./result
+
+# Show diff for darwin-devbx config
+diff-devbx: build-devbx
     nix store diff-closures /run/current-system ./result
 
 # Show diff for NixOS config (run on the nixos host)

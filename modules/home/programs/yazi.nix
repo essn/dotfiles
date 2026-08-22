@@ -12,11 +12,11 @@ in
     enable = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
-    shellWrapperName = "y";  # adopt new default, matches the `y` abbr/alias
+    shellWrapperName = "y"; # adopt new default, matches the `y` abbr/alias
     plugins = {
-      full-border  = "${yaziPlugins}/full-border.yazi";
-      git          = "${yaziPlugins}/git.yazi";
-      smart-enter  = "${yaziPlugins}/smart-enter.yazi";
+      full-border = "${yaziPlugins}/full-border.yazi";
+      git = "${yaziPlugins}/git.yazi";
+      smart-enter = "${yaziPlugins}/smart-enter.yazi";
     };
   };
 

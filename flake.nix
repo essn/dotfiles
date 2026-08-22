@@ -22,32 +22,49 @@
       ...
     }:
     let
-      username = "jesse";
       # Absolute path to the cloned repo — used for out-of-store symlinks so
       # files like CLAUDE.md can be edited without running `just rebuild`.
       # Update this if you clone to a different location.
       mkDotfilesDir = homeDirectory: "${homeDirectory}/dotfiles";
 
-      mkHmConfig = { homeDirectory, hostHome }: {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "bak";
-        home-manager.extraSpecialArgs = { dotfilesDir = mkDotfilesDir homeDirectory; };
-        home-manager.users.${username} =
-          { lib, ... }:
-          {
-            imports = [ hostHome ];
-            home.username = lib.mkForce username;
-            home.homeDirectory = lib.mkForce homeDirectory;
+      mkHmConfig =
+        {
+          username,
+          homeDirectory,
+          hostHome,
+          profile ? "full",
+        }:
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "bak";
+          home-manager.extraSpecialArgs = {
+            dotfilesDir = mkDotfilesDir homeDirectory;
+            inherit profile;
           };
-      };
+          home-manager.users.${username} =
+            { lib, ... }:
+            {
+              imports = [ hostHome ];
+              home.username = lib.mkForce username;
+              home.homeDirectory = lib.mkForce homeDirectory;
+            };
+        };
 
       # Standalone home-manager config for non-NixOS hosts (Nix installed on
       # top of another distro) — no system-level module to manage.
-      mkStandaloneHome = { system, username, homeDirectory, hostHome }:
+      mkStandaloneHome =
+        {
+          system,
+          username,
+          homeDirectory,
+          hostHome,
+        }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system; };
-          extraSpecialArgs = { dotfilesDir = mkDotfilesDir homeDirectory; };
+          extraSpecialArgs = {
+            dotfilesDir = mkDotfilesDir homeDirectory;
+          };
           modules = [
             hostHome
             {
@@ -60,12 +77,34 @@
     {
       darwinConfigurations."jmbp" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = {
+          profile = "full";
+        };
         modules = [
           ./hosts/jmbp
           home-manager.darwinModules.home-manager
           (mkHmConfig {
-            homeDirectory = "/Users/${username}";
+            username = "jesse";
+            homeDirectory = "/Users/jesse";
             hostHome = ./hosts/jmbp/home.nix;
+            profile = "full";
+          })
+        ];
+      };
+
+      darwinConfigurations."darwin-devbx" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          profile = "minimal";
+        };
+        modules = [
+          ./hosts/darwin-devbx
+          home-manager.darwinModules.home-manager
+          (mkHmConfig {
+            username = "darwin-devbx";
+            homeDirectory = "/Users/darwin-devbx";
+            hostHome = ./hosts/darwin-devbx/home.nix;
+            profile = "minimal";
           })
         ];
       };
@@ -76,8 +115,10 @@
           ./hosts/nixos
           home-manager.nixosModules.home-manager
           (mkHmConfig {
-            homeDirectory = "/home/${username}";
+            username = "jesse";
+            homeDirectory = "/home/jesse";
             hostHome = ./hosts/nixos/home.nix;
+            profile = "full";
           })
         ];
       };
@@ -88,8 +129,10 @@
           ./hosts/orbstack
           home-manager.nixosModules.home-manager
           (mkHmConfig {
-            homeDirectory = "/home/${username}";
+            username = "jesse";
+            homeDirectory = "/home/jesse";
             hostHome = ./hosts/orbstack/home.nix;
+            profile = "full";
           })
         ];
       };
