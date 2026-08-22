@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -7,6 +8,7 @@
     includes = lib.optionals pkgs.stdenv.isDarwin [
       "~/.orbstack/ssh/config"
       "~/.ssh/config.d/pve"
+      "~/.ssh/config.d/rc-pve"
     ];
 
     # Use Bitwarden as the SSH agent for all connections (macOS only)
