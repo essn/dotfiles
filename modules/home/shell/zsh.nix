@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  profile ? "full",
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -92,8 +97,15 @@
         # Homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        # OrbStack — CLI tools and shell integration
-        source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+        ${
+          if profile == "full" then
+            ''
+              # OrbStack — CLI tools and shell integration (full profile only)
+              source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+            ''
+          else
+            ""
+        }
       fi
 
       # Editor: prefer hx, fall back through nvim → vim → nano
@@ -192,7 +204,7 @@
     XDG_STATE_HOME = "$HOME/.local/state";
     CLICOLOR = "1";
   }
-  // lib.optionalAttrs pkgs.stdenv.isDarwin {
+  // lib.optionalAttrs (pkgs.stdenv.isDarwin && profile == "full") {
     SSH_AUTH_SOCK = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   };
 }

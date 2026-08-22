@@ -1,4 +1,7 @@
-{ ... }:
+{
+  profile ? "full",
+  ...
+}:
 {
   programs.fish = {
     enable = true;
@@ -11,8 +14,15 @@
       if test $(uname) = "Darwin"
         # Homebrew
         eval (/opt/homebrew/bin/brew shellenv fish)
-        # OrbStack — CLI tools
-        fish_add_path -aP ~/.orbstack/bin
+        ${
+          if profile == "full" then
+            ''
+              # OrbStack — CLI tools (full profile only)
+              fish_add_path -aP ~/.orbstack/bin
+            ''
+          else
+            ""
+        }
       end
 
       # Path additions
@@ -28,8 +38,15 @@
     interactiveShellInit = ''
       # MacOS
       if test $(uname) = "Darwin"
-        # Set Bitwarden SSH socket
-        set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+        ${
+          if profile == "full" then
+            ''
+              # Set Bitwarden SSH socket (full profile only)
+              set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+            ''
+          else
+            ""
+        }
       end
 
       # Editor: prefer hx, fall back through nvim → vim → nano
