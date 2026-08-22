@@ -52,6 +52,7 @@
       "zed"
       "supercollider"
       "blackhole-16ch"
+      "orbstack"
     ];
   };
 }

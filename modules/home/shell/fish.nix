@@ -14,15 +14,8 @@
       if test $(uname) = "Darwin"
         # Homebrew
         eval (/opt/homebrew/bin/brew shellenv fish)
-        ${
-          if profile == "full" then
-            ''
-              # OrbStack — CLI tools (full profile only)
-              fish_add_path -aP ~/.orbstack/bin
-            ''
-          else
-            ""
-        }
+        # OrbStack — CLI tools
+        fish_add_path -aP ~/.orbstack/bin
       end
 
       # Path additions

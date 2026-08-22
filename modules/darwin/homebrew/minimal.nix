@@ -41,6 +41,7 @@
       "claude-code"
       "ghostty"
       "cmux"
+      "orbstack"
     ];
   };
 }
