@@ -1,0 +1,32 @@
+# Colima configuration for darwin-devbx VM
+# Uses QEMU for software emulation (works without nested virtualization)
+
+# VM type: qemu (software emulation) instead of vz (Apple Virtualization.framework)
+vm_type: qemu
+
+# Number of CPUs
+cpu: 2
+
+# Memory size in GiB
+memory: 4
+
+# Disk size in GiB
+disk: 15
+
+# Docker runtime
+runtime: docker
+
+# Kubernetes (disabled by default)
+kubernetes:
+  enabled: false
+
+# Network configuration
+network:
+  address: true
+  dns: []
+
+# Forward the host's SSH agent to the VM
+forward_agent: true
+
+# Docker socket location
+docker_socket: ~/.colima/default/docker.sock

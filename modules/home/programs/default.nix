@@ -10,6 +10,7 @@
     ./helix.nix
     ./zellij.nix
     ./yazi.nix
+    ./colima.nix
   ];
 
   # Zoxide — smart cd
