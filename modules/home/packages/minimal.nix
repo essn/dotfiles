@@ -14,7 +14,7 @@
 
     # Nix utils
     statix
-    nixfmt
+    nixfmt-rfc-style
 
     # Modern CLI replacements (used by shell aliases)
     ripgrep

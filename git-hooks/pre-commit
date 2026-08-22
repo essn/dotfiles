@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Pre-commit hook to format Nix files with nixfmt-rfc-style
+
+# Get list of staged .nix files
+staged_nix_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.nix$')
+
+if [ -z "$staged_nix_files" ]; then
+  # No .nix files staged, exit successfully
+  exit 0
+fi
+
+# Check if nixfmt-rfc-style is available
+if ! command -v nixfmt &> /dev/null; then
+  echo "Error: nixfmt not found in PATH"
+  echo "Please ensure nixfmt-rfc-style is installed via home-manager"
+  exit 1
+fi
+
+echo "Formatting staged Nix files with nixfmt-rfc-style..."
+
+# Format each staged file
+for file in $staged_nix_files; do
+  if [ -f "$file" ]; then
+    echo "  Formatting $file"
+    nixfmt "$file"
+    # Re-stage the formatted file
+    git add "$file"
+  fi
+done
+
+echo "✓ Nix files formatted successfully"
+exit 0
