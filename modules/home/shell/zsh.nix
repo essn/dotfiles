@@ -3,6 +3,14 @@
   programs.zsh = {
     enable = true;
 
+    plugins = [
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+    ];
+
     history = {
       size = 10000;
       ignoreDups = true;
@@ -66,6 +74,20 @@
     };
 
     initContent = ''
+      # zsh-vi-mode rebuilds keymaps at the first prompt, clobbering Atuin's
+      # bindings — re-apply them after the plugin initializes
+      zvm_after_init_commands+=(
+        'bindkey -M emacs "^r" atuin-search'
+        'bindkey -M viins "^r" atuin-search-viins'
+        'bindkey -M vicmd "^r" atuin-search'
+        'bindkey -M emacs "^[[A" atuin-up-search'
+        'bindkey -M viins "^[[A" atuin-up-search-viins'
+        'bindkey -M vicmd "^[[A" atuin-up-search-vicmd'
+        'bindkey -M emacs "^[OA" atuin-up-search'
+        'bindkey -M viins "^[OA" atuin-up-search-viins'
+        'bindkey -M vicmd "^[OA" atuin-up-search-vicmd'
+      )
+
       if [ $(uname) = "Darwin" ]; then
         # Homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
