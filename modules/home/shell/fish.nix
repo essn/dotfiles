@@ -7,6 +7,12 @@
       # Disable greeting
       set -g fish_greeting
 
+      # Path additions
+      fish_add_path -gP ~/.local/bin
+      fish_add_path -gP ~/bin
+      fish_add_path -gP ~/.cargo/bin
+      set -gx PATH $PATH $HOME/.krew/bin
+
       # MacOS
       if test $(uname) = "Darwin"
         # Homebrew
@@ -14,12 +20,6 @@
         # OrbStack — CLI tools
         fish_add_path -aP ~/.orbstack/bin
       end
-
-      # Path additions
-      fish_add_path -gP ~/.local/bin
-      fish_add_path -gP ~/bin
-      fish_add_path -gP ~/.cargo/bin
-      set -gx PATH $PATH $HOME/.krew/bin
 
       # Vi key bindings
       fish_vi_key_bindings
@@ -84,6 +84,10 @@
       if command -q rbw
           rbw gen-completions fish | source
       end
+
+      # Runs last, after mise/brew and every other integration has prepended,
+      # so wrappers in ~/.local/bin always win
+      fish_add_path -gP ~/.local/bin
     '';
 
     shellAbbrs = {

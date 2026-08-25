@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "opencode"
+  ],
+  "meta": {
+    "name": "opencode-cmux",
+    "description": "OpenCode plus access to the cmux control socket, for orchestrating other cmux panes",
+    "author": "jesse"
+  },
+  "groups": {
+    "include": [
+      "mise_manager"
+    ]
+  },
+  "filesystem": {
+    "allow": [
+      "$HOME/.local/state/cmux"
+    ],
+    "read": [
+      "$HOME/.local/share/mise/installs"
+    ]
+  },
+  "environment": {
+    "set_vars": {
+      "CMUX_AGENT_LAUNCH_KIND": "opencode",
+      "CMUX_AGENT_LAUNCH_EXECUTABLE": "/opt/homebrew/bin/nono",
+      "CMUX_AGENT_LAUNCH_ARGV_B64": "L29wdC9ob21lYnJldy9iaW4vbm9ubwBydW4ALS1wcm9maWxlAG9wZW5jb2RlLWNtdXgALS0Ab3BlbmNvZGUA",
+      "CMUX_AGENT_LAUNCH_CWD": "$WORKDIR"
+    }
+  }
+}

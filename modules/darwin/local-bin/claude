@@ -1,0 +1,59 @@
+#!/bin/sh
+# claude-shim.sh -- install as ~/.local/bin/claude
+#
+# Makes "claude" mean "Claude Code inside the nono sandbox" for cmux launches
+# and session restores.
+#
+# Install:
+#   mkdir -p ~/.local/bin
+#   cp claude-shim.sh ~/.local/bin/claude
+#   chmod +x ~/.local/bin/claude
+#   # then put ~/.local/bin before the real Claude binary's directory on PATH
+
+set -eu
+
+NONO="${NONO_BIN:-/opt/homebrew/bin/nono}"
+REAL="${CLAUDE_REAL:-/opt/homebrew/bin/claude}"
+if [ -n "${CMUX_WORKSPACE_ID:-}" ]; then
+  PROFILE="${NONO_CMUX_PROFILE:-claude-cmux}"
+else
+  PROFILE="${NONO_OPENCODE_PROFILE:-claude-local}"
+fi
+
+# Never exec ourselves if CLAUDE_REAL is misconfigured.
+self=$0
+case $self in
+/*) ;;
+*) self=$(pwd)/$self ;;
+esac
+canon() { readlink -f "$1" 2>/dev/null || printf '%s\n' "$1"; }
+if [ "$(canon "$self")" = "$(canon "$REAL")" ]; then
+  printf '%s: refusing to exec itself (%s). Set CLAUDE_REAL to the real binary.\n' \
+    "$0" "$REAL" >&2
+  exit 70
+fi
+
+# Claude may re-invoke itself for subagents; do not nest nono sandboxes.
+if [ -n "${NONO_CAP_FILE:-}" ]; then
+  exec "$REAL" "$@"
+fi
+
+if [ ! -x "$REAL" ]; then
+  printf '%s: real Claude Code not found or not executable: %s\n' "$0" "$REAL" >&2
+  exit 127
+fi
+
+if [ ! -x "$NONO" ]; then
+  printf '%s: nono not found at %s -- refusing to launch unsandboxed.\n' \
+    "$0" "$NONO" >&2
+  printf '  Set NONO_BIN, or run %s directly if you really want that.\n' "$REAL" >&2
+  exit 127
+fi
+
+# --- Launch -------------------------------------------------------------------
+# `run` (not `wrap`) keeps a supervising parent, which is what cmux's session
+# registration and restore logic expects to see.
+if [ -n "${CMUX_WORKSPACE_ID:-}" ]; then
+  exec "$NONO" run --no-diagnostics --allow-cwd --profile "$PROFILE" -- "$REAL" "$@"
+fi
+exec "$NONO" run --allow-cwd --profile "$PROFILE" -- "$REAL" "$@"

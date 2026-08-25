@@ -73,116 +73,126 @@
       mv = "mv -i";
     };
 
-    initContent = ''
-      # zsh-vi-mode rebuilds keymaps at the first prompt, clobbering Atuin's
-      # bindings — re-apply them after the plugin initializes
-      zvm_after_init_commands+=(
-        'bindkey -M emacs "^r" atuin-search'
-        'bindkey -M viins "^r" atuin-search-viins'
-        'bindkey -M vicmd "^r" atuin-search'
-        'bindkey -M emacs "^[[A" atuin-up-search'
-        'bindkey -M viins "^[[A" atuin-up-search-viins'
-        'bindkey -M vicmd "^[[A" atuin-up-search-vicmd'
-        'bindkey -M emacs "^[OA" atuin-up-search'
-        'bindkey -M viins "^[OA" atuin-up-search-viins'
-        'bindkey -M vicmd "^[OA" atuin-up-search-vicmd'
-      )
+    initContent = lib.mkMerge [
+      ''
+        # zsh-vi-mode rebuilds keymaps at the first prompt, clobbering Atuin's
+        # bindings — re-apply them after the plugin initializes
+        zvm_after_init_commands+=(
+          'bindkey -M emacs "^r" atuin-search'
+          'bindkey -M viins "^r" atuin-search-viins'
+          'bindkey -M vicmd "^r" atuin-search'
+          'bindkey -M emacs "^[[A" atuin-up-search'
+          'bindkey -M viins "^[[A" atuin-up-search-viins'
+          'bindkey -M vicmd "^[[A" atuin-up-search-vicmd'
+          'bindkey -M emacs "^[OA" atuin-up-search'
+          'bindkey -M viins "^[OA" atuin-up-search-viins'
+          'bindkey -M vicmd "^[OA" atuin-up-search-vicmd'
+        )
 
-      if [ $(uname) = "Darwin" ]; then
-        # Homebrew
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        if [ $(uname) = "Darwin" ]; then
+          # Homebrew
+          eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        # OrbStack — CLI tools and shell integration
-        source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-      fi
-
-      # Editor: prefer hx, fall back through nvim → vim → nano
-      if command -v hx &>/dev/null; then
-        export EDITOR=hx VISUAL=hx
-      elif command -v nvim &>/dev/null; then
-        export EDITOR=nvim VISUAL=nvim
-      elif command -v vim &>/dev/null; then
-        export EDITOR=vim VISUAL=vim
-      else
-        export EDITOR=nano VISUAL=nano
-      fi
-
-      # Path
-      export PATH="$HOME/.krew/bin:$PATH"
-
-      # Pager
-      export PAGER=less
-      export LESS='-R -F -X'
-
-      # Ghostty terminfo fallback — avoids errors on hosts without Ghostty's terminfo
-      if ! infocmp "$TERM" &>/dev/null 2>&1; then
-        export TERM=xterm-256color
-      fi
-
-      # Yazi file manager wrapper — preserves cwd on exit
-      y() {
-        local tmp cwd
-        tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-        yazi "$@" --cwd-file="$tmp"
-        IFS= read -r -d "" cwd < "$tmp"
-        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-        rm -f -- "$tmp"
-      }
-
-      # Create a directory and cd into it
-      mkcd() {
-        if [ $# -eq 0 ]; then
-          echo "Usage: mkcd <directory>"
-          return 1
+          # OrbStack — CLI tools and shell integration
+          source ~/.orbstack/shell/init.zsh 2>/dev/null || :
         fi
-        mkdir -p "$1" && cd "$1"
-      }
 
-      # Timestamped backup of a file or directory
-      backup() {
-        if [ $# -eq 0 ]; then
-          echo "Usage: backup <file|directory>"
-          return 1
-        fi
-        local timestamp
-        timestamp="$(date +%Y%m%d_%H%M%S)"
-        cp -r "$1" "''${1}.backup_''${timestamp}" && echo "Backup created: ''${1}.backup_''${timestamp}"
-      }
-
-      # Extract common archive formats
-      extract() {
-        if [ $# -eq 0 ] || [ ! -f "$1" ]; then
-          echo "Usage: extract <archive_file>"
-          return 1
-        fi
-        case "$1" in
-          *.tar.bz2|*.tbz2) tar xjf "$1"    ;;
-          *.tar.gz|*.tgz)   tar xzf "$1"    ;;
-          *.tar.xz)         tar xJf "$1"    ;;
-          *.bz2)            bunzip2 "$1"    ;;
-          *.gz)             gunzip "$1"     ;;
-          *.tar)            tar xf "$1"     ;;
-          *.zip)            unzip "$1"      ;;
-          *.Z)              uncompress "$1" ;;
-          *.7z)             7z x "$1"       ;;
-          *.rar)            unrar x "$1"    ;;
-          *) echo "Cannot extract '$1'"; return 1 ;;
-        esac
-      }
-
-      # Find files by name in current directory
-      ff() {
-        if [ $# -eq 0 ]; then
-          echo "Usage: ff <pattern>"
-          return 1
-        fi
-        if command -v fd &>/dev/null; then
-          fd --type f "$1"
+        # Editor: prefer hx, fall back through nvim → vim → nano
+        if command -v hx &>/dev/null; then
+          export EDITOR=hx VISUAL=hx
+        elif command -v nvim &>/dev/null; then
+          export EDITOR=nvim VISUAL=nvim
+        elif command -v vim &>/dev/null; then
+          export EDITOR=vim VISUAL=vim
         else
-          find . -type f -iname "*$1*"
+          export EDITOR=nano VISUAL=nano
         fi
-      }
-    '';
+
+        # Path
+        export PATH="$HOME/.krew/bin:$PATH"
+
+        # Pager
+        export PAGER=less
+        export LESS='-R -F -X'
+
+        # Ghostty terminfo fallback — avoids errors on hosts without Ghostty's terminfo
+        if ! infocmp "$TERM" &>/dev/null 2>&1; then
+          export TERM=xterm-256color
+        fi
+
+        # Yazi file manager wrapper — preserves cwd on exit
+        y() {
+          local tmp cwd
+          tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+          yazi "$@" --cwd-file="$tmp"
+          IFS= read -r -d "" cwd < "$tmp"
+          [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+          rm -f -- "$tmp"
+        }
+
+        # Create a directory and cd into it
+        mkcd() {
+          if [ $# -eq 0 ]; then
+            echo "Usage: mkcd <directory>"
+            return 1
+          fi
+          mkdir -p "$1" && cd "$1"
+        }
+
+        # Timestamped backup of a file or directory
+        backup() {
+          if [ $# -eq 0 ]; then
+            echo "Usage: backup <file|directory>"
+            return 1
+          fi
+          local timestamp
+          timestamp="$(date +%Y%m%d_%H%M%S)"
+          cp -r "$1" "''${1}.backup_''${timestamp}" && echo "Backup created: ''${1}.backup_''${timestamp}"
+        }
+
+        # Extract common archive formats
+        extract() {
+          if [ $# -eq 0 ] || [ ! -f "$1" ]; then
+            echo "Usage: extract <archive_file>"
+            return 1
+          fi
+          case "$1" in
+            *.tar.bz2|*.tbz2) tar xjf "$1"    ;;
+            *.tar.gz|*.tgz)   tar xzf "$1"    ;;
+            *.tar.xz)         tar xJf "$1"    ;;
+            *.bz2)            bunzip2 "$1"    ;;
+            *.gz)             gunzip "$1"     ;;
+            *.tar)            tar xf "$1"     ;;
+            *.zip)            unzip "$1"      ;;
+            *.Z)              uncompress "$1" ;;
+            *.7z)             7z x "$1"       ;;
+            *.rar)            unrar x "$1"    ;;
+            *) echo "Cannot extract '$1'"; return 1 ;;
+          esac
+        }
+
+        # Find files by name in current directory
+        ff() {
+          if [ $# -eq 0 ]; then
+            echo "Usage: ff <pattern>"
+            return 1
+          fi
+          if command -v fd &>/dev/null; then
+            fd --type f "$1"
+          else
+            find . -type f -iname "*$1*"
+          fi
+        }
+      ''
+
+      # Runs last, after mise/brew/krew and every other integration has prepended
+      # its own entries — keeps the cmux opencode shim ahead of all of them.
+      (lib.mkOrder 2000 ''
+        # Specifically for cmux opencode shim
+        # `typeset -U path` (set at the top of .zshrc) drops the later duplicate
+        path=("$HOME/.local/bin" $path)
+      '')
+    ];
   };
 
   home.sessionVariables = {

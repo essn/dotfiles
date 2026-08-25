@@ -1,0 +1,67 @@
+#!/bin/sh
+# opencode-shim.sh -- install as ~/.local/bin/opencode
+#
+# Makes "opencode" mean "opencode inside the nono sandbox", so every launch
+# path (cmux plus-button, command palette, `cmux omo`, and session restore)
+# gets sandboxed without cmux having to know anything about nono.
+#
+# Install:
+#   mkdir -p ~/.local/bin
+#   cp opencode-shim.sh ~/.local/bin/opencode
+#   chmod +x ~/.local/bin/opencode
+#   # then put ~/.local/bin BEFORE /opt/homebrew/bin on PATH (see README notes)
+#
+# Verify with ./verify-sandbox.sh
+
+set -eu
+
+NONO="${NONO_BIN:-/opt/homebrew/bin/nono}"
+REAL="${OPENCODE_REAL:-/opt/homebrew/bin/opencode}"
+if [ -n "${CMUX_WORKSPACE_ID:-}" ]; then
+  PROFILE="${NONO_CMUX_PROFILE:-opencode-cmux}"
+else
+  PROFILE="${NONO_OPENCODE_PROFILE:-opencode-local}"
+fi
+
+# --- Guard 1: never exec ourselves -------------------------------------------
+# If REAL resolves to this very script, we'd fork-bomb. Compare canonical paths.
+self=$0
+case $self in
+/*) ;;
+*) self=$(pwd)/$self ;;
+esac
+canon() { readlink -f "$1" 2>/dev/null || printf '%s\n' "$1"; }
+if [ "$(canon "$self")" = "$(canon "$REAL")" ]; then
+  printf '%s: refusing to exec itself (%s). Set OPENCODE_REAL to the real binary.\n' \
+    "$0" "$REAL" >&2
+  exit 70
+fi
+
+# --- Guard 2: don't nest sandboxes -------------------------------------------
+# opencode spawns subagents that re-invoke `opencode`. If we are already inside
+# nono, run the real binary directly rather than wrapping a second time.
+if [ -n "${NONO_CAP_FILE:-}" ]; then
+  exec "$REAL" "$@"
+fi
+
+# --- Preflight ----------------------------------------------------------------
+if [ ! -x "$REAL" ]; then
+  printf '%s: real opencode not found or not executable: %s\n' "$0" "$REAL" >&2
+  exit 127
+fi
+
+# If nono is missing, fail loudly. Silently running unsandboxed is the one
+# outcome this shim exists to prevent.
+if [ ! -x "$NONO" ]; then
+  printf '%s: nono not found at %s -- refusing to launch unsandboxed.\n' "$0" "$NONO" >&2
+  printf '  Set NONO_BIN, or run %s directly if you really want that.\n' "$REAL" >&2
+  exit 127
+fi
+
+# --- Launch -------------------------------------------------------------------
+# `run` (not `wrap`) keeps a supervising parent, which is what cmux's session
+# registration and restore logic expects to see.
+if [ -n "${CMUX_WORKSPACE_ID:-}" ]; then
+  exec "$NONO" run --no-diagnostics --allow-cwd --profile "$PROFILE" -- "$REAL" "$@"
+fi
+exec "$NONO" run --allow-cwd --profile "$PROFILE" -- "$REAL" "$@"
