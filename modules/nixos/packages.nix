@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Build essentials for Mise to compile language runtimes from source.
   # Mirrors the Homebrew brews in modules/darwin/homebrew.nix, which serve
   # the same purpose on macOS via /opt/homebrew/opt/.

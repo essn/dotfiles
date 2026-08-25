@@ -1,4 +1,5 @@
-{ config, dotfilesDir, ... }: {
+{ config, dotfilesDir, ... }:
+{
   # Mise — handles dev tool versioning and shell integration
   programs.mise = {
     enable = true;

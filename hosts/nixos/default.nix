@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ../../modules/nixos/packages.nix
     # Add hardware-configuration.nix after running `nixos-generate-config`:
@@ -17,7 +18,10 @@
   programs.zsh.enable = true;
 
   # Enable flakes and nix-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "24.11";
 }

@@ -1,4 +1,5 @@
-{ pkgs, modulesPath, ... }: {
+{ pkgs, modulesPath, ... }:
+{
   imports = [
     "${modulesPath}/virtualisation/lxc-container.nix"
     ../../modules/nixos/packages.nix
@@ -39,6 +40,9 @@
   };
 
   programs.zsh.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "24.11";
 }
