@@ -28,26 +28,38 @@
       # Update this if you clone to a different location.
       mkDotfilesDir = homeDirectory: "${homeDirectory}/dotfiles";
 
-      mkHmConfig = { homeDirectory, hostHome }: {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "bak";
-        home-manager.extraSpecialArgs = { dotfilesDir = mkDotfilesDir homeDirectory; };
-        home-manager.users.${username} =
-          { lib, ... }:
-          {
-            imports = [ hostHome ];
-            home.username = lib.mkForce username;
-            home.homeDirectory = lib.mkForce homeDirectory;
+      mkHmConfig =
+        { homeDirectory, hostHome }:
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "bak";
+          home-manager.extraSpecialArgs = {
+            dotfilesDir = mkDotfilesDir homeDirectory;
           };
-      };
+          home-manager.users.${username} =
+            { lib, ... }:
+            {
+              imports = [ hostHome ];
+              home.username = lib.mkForce username;
+              home.homeDirectory = lib.mkForce homeDirectory;
+            };
+        };
 
       # Standalone home-manager config for non-NixOS hosts (Nix installed on
       # top of another distro) — no system-level module to manage.
-      mkStandaloneHome = { system, username, homeDirectory, hostHome }:
+      mkStandaloneHome =
+        {
+          system,
+          username,
+          homeDirectory,
+          hostHome,
+        }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system; };
-          extraSpecialArgs = { dotfilesDir = mkDotfilesDir homeDirectory; };
+          extraSpecialArgs = {
+            dotfilesDir = mkDotfilesDir homeDirectory;
+          };
           modules = [
             hostHome
             {
@@ -60,6 +72,9 @@
     {
       darwinConfigurations."jmbp" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = {
+          dotfilesDir = mkDotfilesDir "/Users/${username}";
+        };
         modules = [
           ./hosts/jmbp
           home-manager.darwinModules.home-manager
