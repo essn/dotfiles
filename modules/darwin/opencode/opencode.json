@@ -5,6 +5,6 @@
     "lsp": "allow"
   },
   "plugin": [
-    ".\/plugins\/cmux-session.js"
+    "./plugins/cmux-session.js",
   ]
 }
