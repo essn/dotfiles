@@ -53,6 +53,26 @@ gc:
 check:
     nix flake check
 
+# Install pre-commit hook to format Nix files
+install-hooks:
+    @echo "Installing git pre-commit hook..."
+    @mkdir -p .git/hooks
+    @cp git-hooks/pre-commit .git/hooks/pre-commit
+    @chmod +x .git/hooks/pre-commit
+    @echo "✓ Pre-commit hook installed"
+
+# Uninstall pre-commit hook
+uninstall-hooks:
+    @echo "Removing git pre-commit hook..."
+    @rm -f .git/hooks/pre-commit
+    @echo "✓ Pre-commit hook removed"
+
+# Format all Nix files with nixfmt
+fmt:
+    @echo "Formatting all Nix files..."
+    @find . -name '*.nix' -not -path './result*' -exec nixfmt {} \;
+    @echo "✓ All Nix files formatted"
+
 # Scan the whole Nix store for corruption (re-hashes file contents — can be slow)
 nix-check:
     nix-store --verify --check-contents
