@@ -4,7 +4,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "zap";
+      cleanup = "uninstall";
       extraFlags = [ "--force" ];
     };
 
@@ -42,6 +42,7 @@
       "mole"
       "nono"
       "opencode"
+      "checksec"
     ];
 
     casks = [
