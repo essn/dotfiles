@@ -26,9 +26,13 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
     defaultCommand = "fd --type f --hidden --exclude .git";
-    fileWidgetCommand = "fd --type f --hidden --exclude .git";
-    fileWidgetOptions = [ "--preview 'bat --color=always {}'" ];
-    changeDirWidgetCommand = "fd --type d --hidden --exclude .git";
+    fileWidget = {
+      command = "fd --type f --hidden --exclude .git";
+      options = [ "--preview 'bat --color=always {}'" ];
+    };
+    changeDirWidget.command = "fd --type d --hidden --exclude .git";
+    # Atuin owns Ctrl-R for history search; disable fzf's binding to avoid the conflict
+    historyWidget.command = "";
   };
 
   # Direnv — per-directory env vars, with nix-direnv for flake support
