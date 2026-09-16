@@ -1,5 +1,5 @@
 { pkgs, lib, ... }:
-lib.mkIf pkgs.stdenv.isDarwin {
+lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
   # Ghostty is installed as a cask via modules/darwin/homebrew.nix
   # This module only manages the config file
   xdg.configFile."ghostty/config".text = ''

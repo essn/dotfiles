@@ -73,7 +73,7 @@
 
       python3
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       # aapt (apktool dependency) only supports x86_64-linux, not aarch64-linux
       apktool
 
