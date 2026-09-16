@@ -10,7 +10,7 @@ if [ -z "$staged_nix_files" ]; then
 fi
 
 # Check if nixfmt-rfc-style is available
-if ! command -v nixfmt &> /dev/null; then
+if ! command -v nixfmt &>/dev/null; then
   echo "Error: nixfmt not found in PATH"
   echo "Please ensure nixfmt-rfc-style is installed via home-manager"
   exit 1
@@ -23,8 +23,6 @@ for file in $staged_nix_files; do
   if [ -f "$file" ]; then
     echo "  Formatting $file"
     nixfmt "$file"
-    # Re-stage the formatted file
-    git add "$file"
   fi
 done
 
