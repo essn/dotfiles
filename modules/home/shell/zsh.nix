@@ -184,14 +184,6 @@
           fi
         }
       ''
-
-      # Runs last, after mise/brew/krew and every other integration has prepended
-      # its own entries — keeps the cmux opencode shim ahead of all of them.
-      (lib.mkOrder 2000 ''
-        # Specifically for cmux opencode shim
-        # `typeset -U path` (set at the top of .zshrc) drops the later duplicate
-        path=("$HOME/.local/bin" $path)
-      '')
     ];
   };
 
