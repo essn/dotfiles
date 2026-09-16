@@ -13,11 +13,9 @@
 
     # Use Bitwarden as the SSH agent for all connections (macOS only)
     settings = lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
-      "*".identityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+      "*".IdentityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
       # xterm-ghostty terminfo isn't present on remote hosts; degrade gracefully
-      "orb *.orb".setEnv = {
-        TERM = "xterm-256color";
-      };
+      "orb *.orb".SetEnv = "TERM=xterm-256color";
     };
   };
 }
