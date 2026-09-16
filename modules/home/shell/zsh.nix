@@ -71,6 +71,10 @@
       rm = "rimraf -i";
       cp = "cp -i";
       mv = "mv -i";
+
+      # Nono
+      nnc = "nono run --profile claude -- claude";
+      nno = "nono run --profile opencode -- opencode";
     };
 
     initContent = lib.mkMerge [
