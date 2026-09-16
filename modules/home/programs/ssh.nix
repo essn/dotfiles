@@ -15,7 +15,10 @@
     settings = lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       "*".IdentityAgent = "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
       # xterm-ghostty terminfo isn't present on remote hosts; degrade gracefully
-      "orb *.orb".SetEnv = "TERM=xterm-256color";
+      # "orb *.orb".SetEnv = "TERM=xterm-256color";
+      "orb *.orb".SetEnv = {
+        TERM = "xterm-256color";
+      };
     };
   };
 }
