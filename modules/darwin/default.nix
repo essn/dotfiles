@@ -6,5 +6,6 @@
     ./security.nix
     ./nono.nix
     ./opencode.nix
+    ./omniwm.nix
   ];
 }

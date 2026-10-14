@@ -85,6 +85,11 @@
           rbw gen-completions fish | source
       end
 
+      # openshell completions
+      if command -q openshell
+        openshell completions fish | source
+      end
+
       # Runs last, after mise/brew and every other integration has prepended,
       # so wrappers in ~/.local/bin always win
       fish_add_path -gP ~/.local/bin

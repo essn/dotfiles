@@ -43,9 +43,11 @@
       "nono"
       "opencode"
       "checksec"
+      "openshell"
     ];
 
     casks = [
+      "yap-app"
       "claude-code"
       "ghostty"
       "cmux"
