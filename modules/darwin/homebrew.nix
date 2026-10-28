@@ -8,9 +8,7 @@
       extraFlags = [ "--force" ];
     };
 
-    taps = [
-      "anomalyco/tap"
-    ];
+    taps = [ ];
 
     brews = [
       # Build essentials — kept in Homebrew so Mise can find them when
