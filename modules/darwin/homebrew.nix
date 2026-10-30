@@ -39,8 +39,10 @@
       "herdr"
       "mole"
       "nono"
+      "ripgrep" # opencode dependency
       "opencode"
       "checksec"
+      "z3" # openshell dependency
       "openshell"
     ];
 
