@@ -41,6 +41,7 @@ lua-language-server = "3.17.1"
 "npm:@electron/asar" = "latest"
 "npm:js-beautify" = "latest"
 "npm:wrangler" = "latest"
+"npm:verdaccio" = "latest"
 
 # Python utilities
 "pipx:ufbt" = "latest"
