@@ -42,6 +42,7 @@ lua-language-server = "latest"
 "npm:js-beautify" = "latest"
 "npm:wrangler" = "latest"
 "npm:verdaccio" = "latest"
+"npm:@modelcontextprotocol/inspector" = "latest"
 
 # Python utilities
 "pipx:ufbt" = "latest"
