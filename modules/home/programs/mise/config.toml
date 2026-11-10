@@ -49,6 +49,7 @@ lua-language-server = "latest"
 
 # Rust utilities
 "cargo:wasm-pack" = "latest"
+"cargo:basalt-tui" = "latest"
 "aqua:zola" = "latest"
 "aqua:watchexec/cargo-watch" = "latest"
 
