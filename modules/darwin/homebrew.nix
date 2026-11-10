@@ -51,7 +51,6 @@
       "claude-code"
       "ghostty"
       "cmux"
-      "zap"
       "zed"
       "supercollider"
       "blackhole-16ch"
