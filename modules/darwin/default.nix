@@ -7,5 +7,6 @@
     ./nono.nix
     ./opencode.nix
     ./omniwm.nix
+    ./verdaccio.nix
   ];
 }
