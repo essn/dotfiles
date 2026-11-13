@@ -21,6 +21,8 @@ sudo nix run nix-darwin -- switch --flake .#jmbp
 
 After the first run, use `just rebuild` for all subsequent applies.
 
+**Verdaccio:** a launchd agent runs a local npm registry on `127.0.0.1:4873` at login. Mise installs it, but mise also installs npm packages *via* it, so on a fresh machine run `just bootstrap-verdaccio` (installs from upstream) before `just rebuild`. Logs: `~/Library/Logs/verdaccio.log`.
+
 ### NixOS
 
 Clone the repo, add your generated hardware config, then switch:

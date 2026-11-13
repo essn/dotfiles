@@ -49,6 +49,10 @@ gc:
     nix store optimise
     mise prune
 
+# Install Verdaccio from the upstream registry (it can't install itself from the local one)
+bootstrap-verdaccio:
+    NPM_CONFIG_REGISTRY=https://registry.npmjs.org BUN_CONFIG_REGISTRY=https://registry.npmjs.org mise install npm:verdaccio
+
 # Check flake for errors
 check:
     nix flake check
